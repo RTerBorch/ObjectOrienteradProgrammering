@@ -6,15 +6,12 @@ public enum VäxtNäringEnum {
     Palm("Kranvatten"),
     KöttätandeVäxt("Proteindryck");
 
+
+
+    private final String näringsTyp;
     public String getNäringsTyp() {
         return näringsTyp;
     }
-
-    public void setNäringsTyp(String näringsTyp) {
-        this.näringsTyp = näringsTyp;
-    }
-
-    private String näringsTyp;
 
     VäxtNäringEnum(String näringsTyp) {
         this.näringsTyp = näringsTyp;

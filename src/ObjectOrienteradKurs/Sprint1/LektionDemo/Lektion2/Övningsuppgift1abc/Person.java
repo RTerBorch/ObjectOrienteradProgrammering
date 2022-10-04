@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift1abc;
+package ObjectOrienteradKurs.Sprint1.LektionDemo.Lektion2.Övningsuppgift1abc;
 
 public class Person {
     private String name;

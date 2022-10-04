@@ -1,5 +1,7 @@
 package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift1abc;
 
+import ObjectOrienteradKurs.Sprint1.LektionDemo.Lektion2.Övningsuppgift1abc.Bil;
+import ObjectOrienteradKurs.Sprint1.LektionDemo.Lektion2.Övningsuppgift1abc.Bilägare;
 import org.junit.jupiter.api.Test;
 
 class BilTest {
