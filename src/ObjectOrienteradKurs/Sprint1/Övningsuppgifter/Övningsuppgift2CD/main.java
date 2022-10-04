@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2C;
+package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2CD;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,6 @@ public class main {
         b1.växla(7); // byter till växel inom parantes
         System.out.println("Nuvarande växel: " + b1.getVäxelJustNu());
         lista.add(b1); // lägger till i arraylist
-
 
         // Båt
         System.out.println("\nBåt");
@@ -48,14 +47,24 @@ public class main {
 
         for (Printable element : lista2) {  // skriver ut allt i lista 2
             element.printMe();
-            System.out.println("Lista 2");
+
         }
 
         List<Printable> lista3 = Arrays.asList(b1, båt1, t1, c1); // Skriver in alla samtidigt
 
+
+        System.out.println();
         for (Printable element2 : lista3) {  // skriver allt i lista 3
             element2.printMe();
-            System.out.println("lista 3");
+            element2.printAntalHjul();
+            System.out.println();
+
+        }
+
+        List<Hjulburen> lista4 = Arrays.asList(b1, c1);
+        System.out.println("\nnext list (4)");
+        for (Hjulburen element3 : lista4){
+            element3.printAntalHjul();
         }
 
         //for(int i = 0; i < lista.size(); i++){

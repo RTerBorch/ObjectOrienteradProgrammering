@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2C;
+package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2CD;
 
 public class Tåg extends Fordon implements Printable{
     private int antalVagnar;
@@ -29,5 +29,10 @@ public class Tåg extends Fordon implements Printable{
     public void printMe() {
         System.out.println("Tåg" +SpeedPlusWeight() + "\nantal vagnar: " + antalVagnar);
         System.out.println();
+    }
+
+    @Override
+    public void printAntalHjul() {
+
     }
 }

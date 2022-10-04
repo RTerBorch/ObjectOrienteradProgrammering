@@ -1,6 +1,16 @@
-package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2C;
+package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2CD;
 
-public class Bil extends Fordon implements Printable {
+public class Bil extends Fordon implements Printable,Hjulburen {
+    int antaHjul = 4;
+
+    public int getAntaHjul() {
+        return antaHjul;
+    }
+
+    public void setAntaHjul(int antaHjul) {
+        this.antaHjul = antaHjul;
+    }
+
     private int antalVäxlar;
     private int växelJustNu;
 
@@ -13,6 +23,8 @@ public class Bil extends Fordon implements Printable {
     public Bil(int hastighet, int vikt) {
         super(hastighet, vikt);
     }
+
+
 
     public int getAntalVäxlar() {
         return antalVäxlar;
@@ -42,9 +54,11 @@ public class Bil extends Fordon implements Printable {
 
     public void printMe() {
         System.out.println("Bil" + SpeedPlusWeight() + "\nVäxlar: " + antalVäxlar + "\nVäxel nu: " + växelJustNu);
-        System.out.println();
-
     }
 
 
+    @Override
+    public void printAntalHjul() {
+        System.out.println("Bil har " + antaHjul + " Hjul");
+    }
 }

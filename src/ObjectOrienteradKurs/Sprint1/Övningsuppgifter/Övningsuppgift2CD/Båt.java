@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2C;
+package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2CD;
 
 public class Båt extends Fordon implements Printable{
     private int dödVikt;
@@ -30,4 +30,8 @@ public class Båt extends Fordon implements Printable{
         System.out.println();
     }
 
+    @Override
+    public void printAntalHjul() {
+
+    }
 }

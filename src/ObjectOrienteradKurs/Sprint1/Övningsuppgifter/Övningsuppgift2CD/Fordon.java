@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2C;
+package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2CD;
 
 public abstract class Fordon {
     private int hastighet;
@@ -26,11 +26,11 @@ public abstract class Fordon {
         this.hastighet = hastighet;
     }
 
-    public String SpeedPlusWeight(){
-    return "\nHastighet: "+ hastighet + "\nVikt: " + vikt;
+    public String SpeedPlusWeight() {
+        return "\nHastighet: " + hastighet + "\nVikt: " + vikt;
+
     }
-
-
-
-
 }
+
+
+
