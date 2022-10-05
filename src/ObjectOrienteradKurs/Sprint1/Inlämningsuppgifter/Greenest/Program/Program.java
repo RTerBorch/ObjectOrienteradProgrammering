@@ -13,10 +13,10 @@ public class Program {
     public static void växtProgram() {
 
         // Här är ett exempel på polymorfism (Objekt växt som är något annat också.)
-        Växter v1 = new Kaktus(0.2, "Igge");
-        Växter v2 = new Palm(5, "Laura");
-        Växter v3 = new KöttätandeVäxt(0.7, "Meatloaf");
-        Växter v4 = new Palm(1, "Putte");
+        Växter v1 = new Kaktus(aktuellaVäxterEnum.iggeEnum.getLängd(), aktuellaVäxterEnum.iggeEnum.getNamn());
+        Växter v2 = new Palm(aktuellaVäxterEnum.lauraEnum.getLängd(), aktuellaVäxterEnum.lauraEnum.getNamn());
+        Växter v3 = new KöttätandeVäxt(aktuellaVäxterEnum.meatloafEnum.getLängd(), aktuellaVäxterEnum.meatloafEnum.getNamn());
+        Växter v4 = new Palm(aktuellaVäxterEnum.putteEnum.getLängd(), aktuellaVäxterEnum.putteEnum.getNamn());
 
         // Lägger in i Arraylist
         List<Växter> plantList = Arrays.asList(v1, v2, v3, v4);
@@ -31,7 +31,7 @@ public class Program {
                 break;
             }
 
-            // Letar igenom plantList efter en matchning på namnet. ifall den hittar blir hittat = true.
+            // Letar igenom plantList efter en matchning på namnet. Om den hittar blir hittat = true.
             boolean hittat = false;
             for (Växter element : plantList) {
 

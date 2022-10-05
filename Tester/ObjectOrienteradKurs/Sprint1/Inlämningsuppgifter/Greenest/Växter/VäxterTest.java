@@ -1,6 +1,7 @@
 package ObjectOrienteradKurs.Sprint1.Inlämningsuppgifter.Greenest.Växter;
 
 import ObjectOrienteradKurs.Sprint1.Inlämningsuppgifter.Greenest.Program.VäxtNäringEnum;
+import ObjectOrienteradKurs.Sprint1.Inlämningsuppgifter.Greenest.Program.aktuellaVäxterEnum;
 import org.junit.jupiter.api.Test;
 
 class VäxterTest {
@@ -8,6 +9,24 @@ class VäxterTest {
     Växter westernCaktus = new Kaktus(1, "Kaktus");
     Växter CoconutTree = new Palm(3, "Palm");
     Växter MeatEater = new KöttätandeVäxt(0.5, "Köttätande-växt");
+
+// Gjorde allt i samlad mapp just för detta projekt, men görs bäst i egna speglade test.klasser
+
+    @Test
+    void aktuellaVäxterEnumKorrektVärdeTest(){
+       //Igge
+       assert aktuellaVäxterEnum.iggeEnum.getNamn().equals("Igge");
+       assert aktuellaVäxterEnum.iggeEnum.getLängd() == 0.2;
+       //Laura
+        assert aktuellaVäxterEnum.lauraEnum.getNamn().equals("Laura");
+        assert aktuellaVäxterEnum.lauraEnum.getLängd() == 5;
+        //Meatloaf
+        assert aktuellaVäxterEnum.meatloafEnum.getNamn().equals("Meatloaf");
+        assert aktuellaVäxterEnum.meatloafEnum.getLängd() == 0.7;
+        //Putte
+        assert aktuellaVäxterEnum.putteEnum.getNamn().equals("Putte");
+        assert aktuellaVäxterEnum.putteEnum.getLängd() == 1;
+    }
 
 
     @Test
