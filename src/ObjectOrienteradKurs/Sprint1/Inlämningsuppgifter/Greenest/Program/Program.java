@@ -12,7 +12,8 @@ public class Program {
 
     public static void växtProgram() {
 
-        // Här är ett exempel på polymorfism (Objekt växt som är något annat också.)
+        // Här är ett exempel på polymorfism (Objekt växt som är något annat också)
+        // v1 får inte bara Växters egenskaper utan även Kaktus egenskaper.
         Växter v1 = new Kaktus(aktuellaVäxterEnum.iggeEnum.getLängd(), aktuellaVäxterEnum.iggeEnum.getNamn());
         Växter v2 = new Palm(aktuellaVäxterEnum.lauraEnum.getLängd(), aktuellaVäxterEnum.lauraEnum.getNamn());
         Växter v3 = new KöttätandeVäxt(aktuellaVäxterEnum.meatloafEnum.getLängd(), aktuellaVäxterEnum.meatloafEnum.getNamn());

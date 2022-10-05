@@ -6,13 +6,13 @@ import javax.swing.*;
 
 
 public abstract class Växter implements Message {
-    // Abstract eftersom klassen växt aldrig ska instansieras
+
 
     // Att inkapsla handlar om att gömma och skydda koden. Man gör detta genom att inkapsla värden med tex private.
-    // Dessa går sedan bara komma åt utanför klassen genom Get/Set ( eller protected inom samma mapp ).
+    // Dessa går sedan att komma åt med Get/Set.
     private final double längd;
     private final String namn;
-    double dosering; // måste vara med så växtarray kan kalla detta utan att värdet blir 0
+    double dosering;
     String näring; // Typ av näring växt behöver
 
     public void vattnaMedVad() {

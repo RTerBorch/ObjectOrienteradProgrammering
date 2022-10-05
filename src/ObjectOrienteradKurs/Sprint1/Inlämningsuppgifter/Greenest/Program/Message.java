@@ -18,15 +18,16 @@ public interface Message {
         return waterWhatPlant;
     }
 
-    static void exitMessage() {
+    static void exitMessage() { // Meddelande när programmet ska avslutas
         JOptionPane.showMessageDialog(null, "Avslutar programmet.");
     }
 
-    static void nameNotFound() {
+    static void nameNotFound() { // Ifall namnet på plantan inte hittas
         JOptionPane.showMessageDialog(null, "Namnet du angav hittades inte i listan.");
     }
 
-    static boolean tryAgain(){
+    static boolean tryAgain(){ // när användare fått svar (eller inte fåt en match på namn) frågas om en omstart,
+
         // Frågar om användare vill fortsätta och sparar knappval i buttonChoice
         int buttonChoice = JOptionPane.showConfirmDialog(null,
                 "Vill du försöka igen?");
