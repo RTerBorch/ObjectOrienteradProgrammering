@@ -58,7 +58,6 @@ public class main {
             element2.printMe();
             element2.printAntalHjul();
             System.out.println();
-
         }
 
         List<Hjulburen> lista4 = Arrays.asList(b1, c1);
@@ -67,7 +66,7 @@ public class main {
             element3.printAntalHjul();
         }
 
-
+       c1.getWheels();
 
         //for(int i = 0; i < lista.size(); i++){
         //            lista.get(i).printMe();         samma sak

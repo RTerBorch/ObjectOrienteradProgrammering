@@ -1,9 +1,9 @@
 package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift2CD;
 
-interface Hjulburen {
+public interface Hjulburen {
 
-    default int getAntalHjul(){
-        return this.getAntalHjul();
+    default int getWheels(){
+        return this.getWheels();
     }
     void printAntalHjul();
 

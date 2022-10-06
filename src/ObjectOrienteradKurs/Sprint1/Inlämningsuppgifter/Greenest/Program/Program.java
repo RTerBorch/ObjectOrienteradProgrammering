@@ -12,8 +12,7 @@ public class Program {
 
     public static void växtProgram() {
 
-        // Här är ett exempel på polymorfism (Objekt växt som är något annat också)
-        // v1 får inte bara Växters egenskaper utan även Kaktus egenskaper.
+        //Nya objekt skapas, polyformism används här för att ge objektet Växter olika egenskaper beroende på planttyp.
         Växter v1 = new Kaktus(aktuellaVäxterEnum.iggeEnum.getLängd(), aktuellaVäxterEnum.iggeEnum.getNamn());
         Växter v2 = new Palm(aktuellaVäxterEnum.lauraEnum.getLängd(), aktuellaVäxterEnum.lauraEnum.getNamn());
         Växter v3 = new KöttätandeVäxt(aktuellaVäxterEnum.meatloafEnum.getLängd(), aktuellaVäxterEnum.meatloafEnum.getNamn());
@@ -22,28 +21,36 @@ public class Program {
         // Lägger in i Arraylist
         List<Växter> plantList = Arrays.asList(v1, v2, v3, v4);
 
-        // Loop startas medan run = true
+        // Loop startas och körs tills användaren väljer att avsluta programmet
         boolean run = true;
         while (run) {
-            String plantName = Message.waterWhatPlant(); // Kallar metoden waterWhatPlant och sätter värdet i plantName.
 
-            if (plantName == null) { // Ifall knappen cancel trycks, avlutas programmet.
+            // Kallar metoden waterWhatPlant och sätter värdet i plantName.
+            String plantName = Message.waterWhatPlant();
+
+            // Om WaterwhatPlant stängs ner, kallas metoden exitMessage och loopen avbryts.
+            if (plantName == null) {
                 Message.exitMessage();
                 break;
             }
 
-            // Letar igenom plantList efter en matchning på namnet. Om den hittar blir hittat = true.
+
+            // i loopen letar vi igenom matchning på namnet i plantlist.
             boolean hittat = false;
             for (Växter element : plantList) {
 
-                // Om det blir matchning, kalla på metoden vattnaMedVad.
+                // Om det blir en matchning, kallas metoden vattnaMedVad, hittat=true.
+                // Användaren frågas sedan om den vill fortsätta genom metoden tryAgain.
+                // Om användaren avbryter returneras en boolean false till "run" och loopen avslutas.
                 if (element.getNamn().toLowerCase().equals(plantName)) {
                     element.vattnaMedVad();
                     hittat = true;
-                    run = Message.tryAgain(); // om kund avbryter returneras en boolean som stänger loop.
+                    run = Message.tryAgain();
                 }
             }
-            if (!hittat) { // Om namnet inte hittats i plantList får användare chans att försöka igen eller avbryta.
+            // Om ingen matchning på namnet görs, kallas metoden tryAgain och användaren kan fortsätta eller avbryta.
+            // Så länge run = true fortsätter loopen.
+            if (!hittat) {
                 Message.nameNotFound();
                 run = Message.tryAgain();
             }

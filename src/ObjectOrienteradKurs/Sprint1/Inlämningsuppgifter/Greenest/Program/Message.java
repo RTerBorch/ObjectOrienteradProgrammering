@@ -8,7 +8,7 @@ public interface Message {
 
     static String waterWhatPlant() {
         // Frågar användaren vilken planta som ska vattnas, returnerar String med inmatning.
-        var waterWhatPlant = JOptionPane.showInputDialog(null, "Vilken växt vill du vattna? ");
+        String waterWhatPlant = JOptionPane.showInputDialog(null, "Vilken växt vill du vattna? ");
 
         // Om personen gjort en inmatning görs strängen till lowercase samt trimmar bort blanksteg.
         if (waterWhatPlant != null) {
