@@ -3,10 +3,21 @@ package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift3;
 import java.util.List;
 
 public class Kurs {
-    private String kurs;
-    Person lärare;
 
+
+
+
+   /* private String kurs;
+    Person lärare;
     List<Student> StudentList;
+
+    public Kurs(String kurs, Person lärare, List<Student> studentList) {
+        this.kurs = kurs;
+        this.lärare = lärare;
+        StudentList = studentList;
+    }
+
+
 
     public Person getLärare() {
         return lärare;
@@ -16,13 +27,6 @@ public class Kurs {
         this.lärare = lärare;
     }
 
-
-
-    public Kurs(String kurs, Person lärare, List<Student> studentList) {
-        this.kurs = kurs;
-        this.lärare = lärare;
-        StudentList = studentList;
-    }
 
     public String getKurs() {
         return kurs;
@@ -39,4 +43,6 @@ public class Kurs {
     public void setKurs(String kurs) {
         this.kurs = kurs;
     }
+
+    */
 }

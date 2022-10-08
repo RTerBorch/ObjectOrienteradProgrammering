@@ -1,5 +1,6 @@
 package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,6 +8,15 @@ public class main {
 
     public static void main(String[] args) {
 
+        Register reg = new Register();
+
+       // reg.allStudents().get(0).putInCourse(String.valueOf(KursEnum.Matte));
+        //reg.allStudents().get(0).printCourses();
+        reg.printMathStudents();
+
+
+
+        /*
         Student p1 = new Student("Sigurt", 18);
         Student p2 = new Student("Igrun", 19);
         Student p3 = new Student("Henrietta", 20);
@@ -16,13 +26,54 @@ public class main {
         Student p7 = new Student("Sara", 20);
         Student p8 = new Student("Kirsti", 18);
 
-
         // Skollärare
         Person l1 = new Lärare("Magister Hans P Polbirth", 53);
         Person l2 = new Lärare("Fröken Prusiluska O Karamell", 34);
 
+        // Klasslista
+        List<Student> matteKlassLista = new ArrayList<>();
+        List<Student> biologiKlassLista = new ArrayList<>();
 
         // Skolkurser
+        Kurs matte = new Kurs("Matte",l1,matteKlassLista);
+        Kurs biologi = new Kurs("Biologi",l2,biologiKlassLista);
+
+        // Lägg in personer i klassrum
+        matteKlassLista = Arrays.asList(p1,p2,p3,p4);
+        biologiKlassLista = Arrays.asList(p1,p2,p3,p4,p5,p6);
+
+
+        // Matte
+        System.out.println("Lärare:\t" + matte.getLärare().getName());
+        System.out.println("Kurs:\t" + matte.getKurs());
+        System.out.print("Elever\t");
+        for (Student element : matteKlassLista) {
+            System.out.print(element.getName()+"\t");
+        }
+        System.out.println("\n");
+
+        // Biologi
+        System.out.println("Lärare:\t" + matte.getLärare().getName());
+        System.out.println("Kurs:\t" + matte.getKurs());
+        System.out.print("Elever\t");
+        for(Student element : biologiKlassLista){
+            System.out.print(element.getName() + "\t");
+        }
+
+         */
+
+
+
+/*
+        List<Student> matteElever = new ArrayList<>();
+        matteElever.add(p1);
+
+
+        // Skolkurser
+        Kurs matte = new Kurs("Matte",l1,matteElever);
+        p1.addToCourse(matte);
+
+
         // Biologi
         List<Student> StudentList1 = Arrays.asList(p1, p2, p3, p4, p8); // klasslista
         Kurs k1 = new Kurs("Biologi", l1, StudentList1);
@@ -66,6 +117,8 @@ public class main {
         }
         k1.setLärare(l2);
         System.out.println(k1.getLärare().getName());
+
+ */
     }
 
 
