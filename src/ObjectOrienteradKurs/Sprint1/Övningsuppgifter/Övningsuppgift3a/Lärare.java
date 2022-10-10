@@ -25,4 +25,18 @@ public class Lärare extends Person {
     public Lärare(String name, int age) {
         super(name, age);
     }
+
+
+    public void printAllClasses(){
+        // Skriv ut en lärares alla kurser
+        System.out.print("\n" + getName() + ", är lärare över dessa klasser: ");
+        if ( teachCourse.size() == 0){
+            System.out.print("Denna lärare har inga kurser");
+        } else {
+            for (Kurs element : teachCourse) {
+                System.out.print(element.getKursNamn() + "\t");
+            }
+        }
+    }
+
 }

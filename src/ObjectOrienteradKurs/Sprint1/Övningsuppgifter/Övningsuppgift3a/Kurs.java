@@ -1,6 +1,5 @@
 package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift3a;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 

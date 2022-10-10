@@ -18,9 +18,9 @@ class StudentTest {
         System.out.println(tester.getInCourse().size());
         tester.putInCourse(String.valueOf(Biologi));
         System.out.println(tester.getInCourse().size());
-        tester.printCourses();
+     //   tester.printCourses();
         tester.putInCourse(String.valueOf(Matte));
         System.out.println(tester.getInCourse().size());
-        tester.printCourses();
+       // tester.printCourses();
     }
 }

@@ -1,6 +1,10 @@
 package ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift3a;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static ObjectOrienteradKurs.Sprint1.Övningsuppgifter.Övningsuppgift3.KursEnum.Matte;
 
 public class main {
@@ -12,8 +16,8 @@ public class main {
 
     }
     public static void studentInput(Kurs Kurs, Student Student){
-        Kurs.setElever(Student); // Sigurt tillsätts som elev i listan matte
-        Student.joinCourse(Kurs); // Matte tillsätts på Sigurt kurser han går på
+        Kurs.setElever(Student); // tillsätter elev i listan matte
+        Student.joinCourse(Kurs); // Kurs tillsätts på elev kurser hen går på
     }
 
     public static void main(String[] args) {
@@ -21,43 +25,44 @@ public class main {
         Student Sigurt = new Student("Sigurt", 18);
         Student Igrun = new Student("Igrun", 19);
         Student Henrietta = new Student("Henrietta", 20);
+        List<Student> allStudents = Arrays.asList(Sigurt,Igrun,Henrietta);
 
         Lärare Hans = new Lärare("Magister Hans P Polbirth", 53);
         Lärare Maj = new Lärare("Fröken Maj O Karamell", 34);
+        List<Lärare> allTeachers = Arrays.asList(Hans, Maj);
 
         Kurs Matte = new Kurs("Matte");
         Kurs Biologi = new Kurs ("Biologi");
 
-        //fyll kurs matte
+        //fyll kurs
         teacherInput(Matte,Maj); // Tillsätter lärare för Kurs, samt lägger klass i lärarens lista.
 
         studentInput(Matte, Sigurt); // Tillsätter Elev i KursArray, samt lägger kurs i studentens Array
+        studentInput(Biologi, Sigurt);
+
         studentInput(Matte, Igrun);
+
         studentInput(Matte, Henrietta);
 
         // Skriver ut alla i matte
         Matte.PrintClass(); // Skriver ut hela klasslistan ersätter raden under
         Biologi.PrintClass();
 
+        // Skriver en students klasser
+        Sigurt.printAllClasses();
 
-        // Skriv ut en elevs alla kurser
-        System.out.println(Sigurt.getInCourse().toString());
+        // print all students klasser
+        for (Student element : allStudents ){
+            element.printAllClasses();
+        }
+
         // Skriv ut en Lärares alla kurser
+        Maj.printAllClasses();
 
-
-
-
-
-
-        // Skriv ut lärarens kurser
-       // System.out.println(Hans.getTeachCourse().get(0).getKursNamn());
-
-        // Skriv ut elevernas kurser
-    //    System.out.println(Sigurt.getInCourse().get(0).getKursNamn());
-     //   System.out.println(Igrun.getInCourse().get(0).getKursNamn());
-
+        // print all teachers klasser
+        for (Lärare element : allTeachers){
+            element.printAllClasses();
+        }
 
     }
-
-
 }
