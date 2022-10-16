@@ -1,0 +1,4 @@
+Kalle Nilsson, Xvägen 1, 12345 Ystad
+25, 80, 175
+Mimmi Mattsson, Xvägen 2, 12345 Ystad
+25, 68, 169
