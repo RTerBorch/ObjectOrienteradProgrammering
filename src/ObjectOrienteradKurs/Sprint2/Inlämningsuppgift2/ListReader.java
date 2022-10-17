@@ -161,7 +161,7 @@ public class ListReader {
     public Scanner readGymRecords() {
         Scanner scannerList;
         try {
-            scannerList = new Scanner(new FileReader("src/ObjectOrienteradKurs/Sprint2/Inlämningsuppgift2/GymRecords"));
+            scannerList = new Scanner(new FileReader("src/ObjectOrienteradKurs/Sprint2/Inlämningsuppgift2/GymRecords.txt"));
         } catch (FileNotFoundException e) {
             System.out.println("GymRecords gick inte att läsa");
             throw new RuntimeException(e);
