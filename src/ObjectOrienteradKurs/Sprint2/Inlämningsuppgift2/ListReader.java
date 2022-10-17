@@ -1,6 +1,8 @@
 package ObjectOrienteradKurs.Sprint2.Inlämningsuppgift2;
 
+import javax.swing.*;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.LocalDate;
@@ -33,23 +35,29 @@ public class ListReader {
     }
 
     public String[] splitInfoString(String userInput) {
+        //[0]=socialNr, [1]=name
         String[] infoArray = userInput.split(",");
         infoArray[1] = infoArray[1].trim();
 
+        //Sparar namn & personNr
+        membership.setName(infoArray[1]);
+        membership.setSocialNumber(infoArray[0]);
+
         return infoArray;
-
-
     }
 
-
-    public void returnMatch(Scanner inputList, String userInput) {
+    public void returnMatch(Scanner inputScanner, String userInput) {
         boolean matchFound = false;
-        userInput = userInput.toUpperCase();
 
-        while (inputList.hasNext()) {
+        if ( userInput != null) userInput = userInput.toUpperCase();
+
+        while (inputScanner.hasNext()) {
+
+            if ( userInput == null) break;
+
             // Varje kund har 2 strängar innan nästa kund
-            infoString = inputList.nextLine().toUpperCase();
-            dateString = inputList.nextLine().toUpperCase();
+            infoString = inputScanner.nextLine().toUpperCase();
+            dateString = inputScanner.nextLine().toUpperCase();
 
             // Om matchning på userInput görs, avbryts loop och findCustomer returnerar true.
             if (infoString.contains(userInput)) {
@@ -58,8 +66,10 @@ public class ListReader {
                 break;
             }
         }
+
+        if ( userInput == null) JOptionPane.showMessageDialog(null,"Programmet avbryts");
         // Om ingen matchning görs, ingen kundhistorik finns. Ej Behörig
-        if (!matchFound) {
+        else if (!matchFound) {
             membership.setCustomerHistory(false);
         }
 
@@ -108,8 +118,9 @@ public class ListReader {
 
     }
 
-    public boolean isMember(String userInput) {
-        int[] date = splitDateString(userInput);
+    public boolean isMember(String dateString) {
+        // Använder metoden splitDateString för att förändra String till passande int array.
+        int[] date = splitDateString(dateString);
 
         LocalDate dateInput = LocalDate.of(date[0], date[1], date[2]);
         LocalDate dateToday = LocalDate.now();
@@ -123,17 +134,32 @@ public class ListReader {
         String[] infoStringArray = splitInfoString(infoString);
 
         try {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(infoStringArray[0]))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(infoStringArray[1] + " - " + infoStringArray[0], true))) {
 
 
-                writer.write("Personnr: " + infoStringArray[0] + "\tNamn: " + infoStringArray[1] + "\tBesöksdatum: " + LocalDate.now());
+                writer.write("Personnr: " + infoStringArray[0] + "\tNamn: " + infoStringArray[1] + "\tBesöksdatum: " + LocalDate.now() + "\n");
                 writer.flush();
                 writer.close();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Fel vid loggning av kund");
         }
 
 
     }
+
+    // Skapar en scanner metod
+    public Scanner readGymRecords() {
+        Scanner scannerList;
+        try {
+            scannerList = new Scanner(new FileReader("src/ObjectOrienteradKurs/Sprint2/Inlämningsuppgift2/GymRecords"));
+        } catch (FileNotFoundException e) {
+            System.out.println("GymRecords gick inte att läsa");
+            throw new RuntimeException(e);
+        }
+        return scannerList;
+    }
+
+
 }

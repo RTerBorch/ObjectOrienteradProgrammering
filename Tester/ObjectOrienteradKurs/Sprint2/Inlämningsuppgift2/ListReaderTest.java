@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 class ListReaderTest {
 
@@ -50,7 +51,7 @@ class ListReaderTest {
 
 
     @Test
-    public void isMembershipStillValid(){
+    public void isMembershipStillValid() {
 
         String dateString = (LocalDate.now().toString()); // Dagens datum ska bli rätt (inom 1 år från nu)
         String dateString2 = "2021-10-15"; // ska bli fel (mer än 1 år)
@@ -61,7 +62,7 @@ class ListReaderTest {
     }
 
     @Test
-    public void writeToDokument(){
+    public void writeToDokument() {
         // Testar så att skrift till dokument får rätt dokumentnamn samt rätt text som visar efter läsning.
 
         String infoString = "7502031234, Anna Andersson";
@@ -70,12 +71,36 @@ class ListReaderTest {
         reader.writeLog("7502031234, Anna Andersson");
 
         try {
-            Scanner input = new Scanner(new FileReader("7502031234"));
+            Scanner input = new Scanner(new FileReader("Anna Andersson - 7502031234"));
 
-            assert input.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: 2022-10-16");
+            assert input.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: " + LocalDate.now() );
 
-        }catch (Exception e){
+        } catch (Exception e) {
+            System.out.println("Kunde inte läsa fil");
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void removeTestFile() {
+    // Fungerar ej som den ska i test, utan bara separat.
+        // Låter den vara kvar som extra funktion
+
+        try {
+
+            File f = new File("Anna Andersson - 7502031234"); // Tar bort demofil
+
+            if (f.delete()) //returnerar boolean
+            {
+                System.out.println(f.getName() + " deleted");   //Skriver filnamn + deleted om den lyckas
+            } else {
+                System.out.println("Could not delete testFile"); // annars failed
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+

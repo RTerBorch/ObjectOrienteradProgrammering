@@ -1,15 +1,24 @@
 package ObjectOrienteradKurs.Sprint2.Inlämningsuppgift2;
 
 public class Membership {
-    private int year;
-    private int month;
-    private int day;
+    private String name;
+    private String socialNumber;
 
-    private int name;
-    private int personalNumber;
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public String getSocialNumber() {
+        return socialNumber;
+    }
 
+    public void setSocialNumber(String socialNumber) {
+        this.socialNumber = socialNumber;
+    }
 
     private boolean member;
 
@@ -20,7 +29,6 @@ public class Membership {
     public void setMember(boolean member) {
         this.member = member;
     }
-
 
 
     private boolean customerHistory;
