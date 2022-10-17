@@ -41,7 +41,7 @@ public class BestGymEver {
 
                 // Är kundens medlemskap aktivt, loggar vi kundens uppgifter i egen fil.
                 reader.writeLog(reader.getInfoString());
-                System.out.println("\n" + reader.membership.getName() + " är medlem, besöket har sparats i kundens logg\ng");
+                System.out.println("\n" + reader.membership.getName() + " är medlem, besöket har sparats i kundens logg\n");
             }
 
 
