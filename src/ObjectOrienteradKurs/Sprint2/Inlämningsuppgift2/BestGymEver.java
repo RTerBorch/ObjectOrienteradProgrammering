@@ -16,7 +16,7 @@ public class BestGymEver {
         while(run) {
 
 
-            System.out.println("Ange personnr eller namn.\npersonnr skrivs med 10 tecken yymmddnnnn");
+            System.out.println("Ange personnr eller förnamn och efternamn.\npersonnr skrivs med 10 tecken yymmddnnnn");
 
             // Letar igenom efter match, ifall match hittas, finns kund i databas CustomaryHistory = true;
             // Samt att 2 strängar med kundInfo och kundens betaldatum sparas.
@@ -28,20 +28,20 @@ public class BestGymEver {
 
             // Ifall ingen historik hittas
             if(!reader.membership.isCustomerHistory()){
-                System.out.println("Kunden är obehörig, eller så har fel uppgifter angetts.");
+                System.out.println("\nKunden är obehörig, eller så har fel uppgifter angetts.\n");
 
             }
 
             // Kontrollerar att kundens medlemskap är fortfarande aktivt
             // Om inte bryts loop.
             if (!reader.isMember(reader.getDateString())){
-                System.out.println("Kundens medlemskap är inte längre aktivt");
+                System.out.println("\n"+ reader.membership.getName() + "´s medlemskap är inte längre aktivt\n");
 
             } else if (reader.membership.isCustomerHistory()) {
 
                 // Är kundens medlemskap aktivt, loggar vi kundens uppgifter i egen fil.
                 reader.writeLog(reader.getInfoString());
-                System.out.println(reader.membership.getName() + " är medlem, besöket har sparats i kundens logg");
+                System.out.println("\n" + reader.membership.getName() + " är medlem, besöket har sparats i kundens logg\ng");
             }
 
 

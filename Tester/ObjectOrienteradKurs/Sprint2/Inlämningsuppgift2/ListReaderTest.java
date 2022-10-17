@@ -19,12 +19,22 @@ class ListReaderTest {
     @Test
     void returnMatch() {
 
-        String testInput = "ANNA Andersson";
-        reader.returnMatch(testReadTestDoc, testInput);
+        //7502031234, Anna Andersson 2022-05-03
+        //8505132345, Per Persson 2019-12-29
+
+        String testInput1 = "ANNA Andersson";
+        reader.returnMatch(testReadTestDoc, testInput1);
 
         assert reader.membership.isCustomerHistory();
         assert reader.getInfoString().equalsIgnoreCase("7502031234, Anna Andersson");
         assert reader.getDateString().equalsIgnoreCase("2022-05-03");
+
+        String testInput2 = "8505132345";
+        reader.returnMatch(testReadTestDoc, testInput2);
+
+        assert reader.membership.isCustomerHistory();
+        assert reader.getInfoString().equalsIgnoreCase("8505132345, Per Persson");
+        assert reader.getDateString().equalsIgnoreCase("2019-12-29");
 
     }
 
@@ -46,9 +56,7 @@ class ListReaderTest {
         assert dateStringArray[0] == 2022;
         assert dateStringArray[1] == 5;
         assert dateStringArray[2] == 3;
-
     }
-
 
     @Test
     public void isMembershipStillValid() {
@@ -73,7 +81,7 @@ class ListReaderTest {
         try {
             Scanner input = new Scanner(new FileReader("Anna Andersson - 7502031234"));
 
-            assert input.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: " + LocalDate.now() );
+            assert input.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: " + LocalDate.now());
 
         } catch (Exception e) {
             System.out.println("Kunde inte läsa fil");
@@ -84,7 +92,7 @@ class ListReaderTest {
 
     @Test
     public void removeTestFile() {
-    // Fungerar ej som den ska i test, utan bara separat.
+        // Fungerar ej som den ska i test, utan bara separat.
         // Låter den vara kvar som extra funktion
 
         try {

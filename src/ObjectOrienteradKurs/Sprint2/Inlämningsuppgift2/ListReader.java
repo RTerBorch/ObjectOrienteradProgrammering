@@ -49,27 +49,35 @@ public class ListReader {
     public void returnMatch(Scanner inputScanner, String userInput) {
         boolean matchFound = false;
 
-        if ( userInput != null) userInput = userInput.toUpperCase();
+        userInput = userInput;
+
+        // separera namn och personnr
 
         while (inputScanner.hasNext()) {
 
-            if ( userInput == null) break;
-
             // Varje kund har 2 strängar innan nästa kund
-            infoString = inputScanner.nextLine().toUpperCase();
-            dateString = inputScanner.nextLine().toUpperCase();
+            infoString = inputScanner.nextLine();
+            String[] infoArray = splitInfoString(infoString);
+            dateString = inputScanner.nextLine();
 
+            if (infoArray[0].equalsIgnoreCase(userInput) || infoArray[1].equalsIgnoreCase(userInput)) {
+                matchFound = true;
+                membership.setCustomerHistory(true);
+                break;
+            }
+/*
             // Om matchning på userInput görs, avbryts loop och findCustomer returnerar true.
             if (infoString.contains(userInput)) {
                 matchFound = true;
                 membership.setCustomerHistory(true);
                 break;
             }
+
+ */
         }
 
-        if ( userInput == null) JOptionPane.showMessageDialog(null,"Programmet avbryts");
         // Om ingen matchning görs, ingen kundhistorik finns. Ej Behörig
-        else if (!matchFound) {
+        if (!matchFound) {
             membership.setCustomerHistory(false);
         }
 
