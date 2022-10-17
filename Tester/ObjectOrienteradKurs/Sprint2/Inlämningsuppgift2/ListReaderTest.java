@@ -1,11 +1,13 @@
 package ObjectOrienteradKurs.Sprint2.Inlämningsuppgift2;
 
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+
 
 class ListReaderTest {
 
@@ -15,9 +17,13 @@ class ListReaderTest {
             "8505132345, Per Persson\n" +
             "2019-12-29");
 
-
+    @BeforeAll
+    public static void testStart(){
+        System.out.println("Beginning test");
+    }
     @Test
     void returnMatch() {
+        // Testar om returnMatch kan hitta med namn / personNr
 
         //7502031234, Anna Andersson 2022-05-03
         //8505132345, Per Persson 2019-12-29
@@ -40,6 +46,8 @@ class ListReaderTest {
 
     @Test
     void splitInfoString() {
+        // Testar att splitInfoString kan separera en text med både personNr och namn.
+
         String splitTextInput = "7502031234, Anna Andersson";
         String[] infoStringArray = reader.splitInfoString(splitTextInput);
 
@@ -49,6 +57,7 @@ class ListReaderTest {
 
     @Test
     public void separateDateToInts() {
+        // Testar att vi kan separera datumsträng till int som behövs för att testa datum.
 
         String splitTextInput = "2022-05-03";
         int[] dateStringArray = reader.splitDateString(splitTextInput);
@@ -60,6 +69,8 @@ class ListReaderTest {
 
     @Test
     public void isMembershipStillValid() {
+        // Testar att medlemskap med som betalats inom eller = ett år blir aktivt.
+        // Testar så att gammalt datum visar inaktivt medlemskap.
 
         String dateString = (LocalDate.now().toString()); // Dagens datum ska bli rätt (inom 1 år från nu)
         String dateString2 = "2021-10-15"; // ska bli fel (mer än 1 år)
@@ -75,20 +86,23 @@ class ListReaderTest {
 
         String infoString = "7502031234, Anna Andersson";
 
-        // Skriver till dokument, dokumentet får personnr som namn.
+        // Skriver till fil. Filen ska alltså heta Namn + Personnr.
         reader.writeLog("7502031234, Anna Andersson");
+        String[] infoStringArray = reader.splitInfoString(infoString);
 
+
+        // testar att vi kan läsa dokumentet igen och få rätt utskrift.
         try {
-            Scanner input = new Scanner(new FileReader("Anna Andersson - 7502031234"));
+            Scanner input = new Scanner(new FileReader(infoStringArray[1]+" - " + infoStringArray[0]));
 
+            // Testar att utskriften till fil stämmer.
             assert input.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: " + LocalDate.now());
-
         } catch (Exception e) {
             System.out.println("Kunde inte läsa fil");
             e.printStackTrace();
         }
-
     }
+
 
     @Test
     public void removeTestFile() {

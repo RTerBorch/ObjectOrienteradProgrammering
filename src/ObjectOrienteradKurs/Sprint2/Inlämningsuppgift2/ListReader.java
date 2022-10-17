@@ -1,40 +1,27 @@
 package ObjectOrienteradKurs.Sprint2.Inlämningsuppgift2;
 
 import javax.swing.*;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ListReader {
     private String infoString = "";
     private String dateString = "";
-    private String testInput = "";
+
     Membership membership = new Membership();
-
-    public Membership getMembership() {
-        return membership;
-    }
-
-    public void setMembership(Membership membership) {
-        this.membership = membership;
-    }
 
     public String getInfoString() {
         return infoString;
-    }
-
-    public void setInfoString(String infoString) {
-        this.infoString = infoString;
     }
 
     public String getDateString() {
         return dateString;
     }
 
+
     public String[] splitInfoString(String userInput) {
+        //Separerar personNr & namn
         //[0]=socialNr, [1]=name
         String[] infoArray = userInput.split(",");
         infoArray[1] = infoArray[1].trim();
@@ -47,77 +34,35 @@ public class ListReader {
     }
 
     public void returnMatch(Scanner inputScanner, String userInput) {
+        // Om matchning görs med personNr eller namn ändras matchFound till True;
         boolean matchFound = false;
 
-        userInput = userInput;
-
-        // separera namn och personnr
-
+        // Medans det finns text att läsa i dokument går programmet igenom alla kunder och letar match i namn eller personNr.
         while (inputScanner.hasNext()) {
 
             // Varje kund har 2 strängar innan nästa kund
+            // Separerar infoString till personNr & namn array. [0]=socialNr, [1]=name
             infoString = inputScanner.nextLine();
             String[] infoArray = splitInfoString(infoString);
+
+            // Kundens senaste betaldatum hamnar i egen sträng.
             dateString = inputScanner.nextLine();
 
+            // Om matchning görs med personNr eller namn ändras matchFound till True;
             if (infoArray[0].equalsIgnoreCase(userInput) || infoArray[1].equalsIgnoreCase(userInput)) {
                 matchFound = true;
                 membership.setCustomerHistory(true);
                 break;
             }
-/*
-            // Om matchning på userInput görs, avbryts loop och findCustomer returnerar true.
-            if (infoString.contains(userInput)) {
-                matchFound = true;
-                membership.setCustomerHistory(true);
-                break;
-            }
-
- */
         }
-
-        // Om ingen matchning görs, ingen kundhistorik finns. Ej Behörig
+        // Om ingen matchning gjorts, finns ingen kundhistorik. Alltså ej Behörig
         if (!matchFound) {
             membership.setCustomerHistory(false);
         }
-
     }
-
-    /*
-    public boolean findCustomer(String userInput) {
-        boolean matchFound = false;
-
-        try {
-            Scanner read = new Scanner(new FileReader("src/ObjectOrienteradKurs/Sprint2/Inlämningsuppgift2/GymRecords"));
-
-            while (read.hasNext()) {
-
-                // Varje kund har 2 strängar innan nästa kund
-                infoString = read.nextLine().toUpperCase();
-                dateString = read.nextLine().toUpperCase();
-
-                // Om matchning på userInput görs, avbryts loop och findCustomer returnerar true.
-                if (infoString.contains(userInput)) {
-                    matchFound = true;
-                    membership.setCustomerHistory(true);
-                    break;
-                }
-            }
-            if (!matchFound) {
-                membership.setCustomerHistory(false);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Fel i läsning");
-        }
-
-        // om ingen matchning görs förblir denna false.
-        return matchFound;
-    }
-
-     */
 
     public int[] splitDateString(String userInput) {
+        // Separerar datumSträng och sätter in i en array på 3 platser. yy mm dd
         String[] dateString = userInput.split("-");
         int[] date = {Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2])};
 
@@ -127,7 +72,7 @@ public class ListReader {
     }
 
     public boolean isMember(String dateString) {
-        // Använder metoden splitDateString för att förändra String till passande int array.
+        // Använder metoden splitDateString för att förändra dateString till passande int array.
         int[] date = splitDateString(dateString);
 
         LocalDate dateInput = LocalDate.of(date[0], date[1], date[2]);
@@ -136,29 +81,30 @@ public class ListReader {
         return (!dateInput.isBefore(dateToday.minusYears(1)));
 
     }
-
     public void writeLog(String infoString) {
-        // Tar in personnr + namn, sedan separerar dessa till 2st stringar i array.[0]=personnr, [1]=namn
+        // Tar in personNr + namn, använder metoden splitInfoString för att separera String till [0]=personNr, [1]=namn
         String[] infoStringArray = splitInfoString(infoString);
 
+        // Skriver kundens besök i en egen fil som skapas för kund om den inte redan finns.
         try {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(infoStringArray[1] + " - " + infoStringArray[0], true))) {
 
 
                 writer.write("Personnr: " + infoStringArray[0] + "\tNamn: " + infoStringArray[1] + "\tBesöksdatum: " + LocalDate.now() + "\n");
                 writer.flush();
-                writer.close();
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Fel vid loggning av kund");
+        } catch (Exception e) {
+            System.out.println("Okänt fel");
         }
-
-
     }
 
-    // Skapar en scanner metod
+
     public Scanner readGymRecords() {
+        // Skapar en metod som läser från fil genom en scanner.
+        // Denna scanner returneras genom metod.
         Scanner scannerList;
         try {
             scannerList = new Scanner(new FileReader("src/ObjectOrienteradKurs/Sprint2/Inlämningsuppgift2/GymRecords.txt"));
