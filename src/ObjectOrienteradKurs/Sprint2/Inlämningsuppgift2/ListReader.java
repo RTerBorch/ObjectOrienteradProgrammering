@@ -78,6 +78,7 @@ public class ListReader {
         LocalDate dateInput = LocalDate.of(date[0], date[1], date[2]);
         LocalDate dateToday = LocalDate.now();
 
+        // Om datum inte är tidigare än ett år från idag returneras true, kunden är aktivMedlem.
         return (!dateInput.isBefore(dateToday.minusYears(1)));
 
     }
@@ -101,7 +102,6 @@ public class ListReader {
         }
     }
 
-
     public Scanner readGymRecords() {
         // Skapar en metod som läser från fil genom en scanner.
         // Denna scanner returneras genom metod.
@@ -113,6 +113,18 @@ public class ListReader {
             throw new RuntimeException(e);
         }
         return scannerList;
+    }
+
+    public void removeFile(String namn, String personNr){
+        File f = new File(namn + " - " + personNr);
+
+        if (f.delete()) //returnerar boolean
+        {
+            System.out.println(f.getName() + " deleted");   //Skriver filnamn + deleted om den lyckas
+        } else {
+            System.out.println("Could not delete testFile"); // annars failed
+        }
+
     }
 
 

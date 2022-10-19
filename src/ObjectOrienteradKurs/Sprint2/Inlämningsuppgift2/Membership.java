@@ -4,6 +4,10 @@ public class Membership {
     private String name;
     private String socialNumber;
 
+
+
+
+
     public String getName() {
         return name;
     }

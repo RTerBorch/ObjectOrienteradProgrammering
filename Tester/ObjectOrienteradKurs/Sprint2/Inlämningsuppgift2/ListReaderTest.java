@@ -1,13 +1,13 @@
 package ObjectOrienteradKurs.Sprint2.Inlämningsuppgift2;
 
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.Scanner;
-
 
 class ListReaderTest {
 
@@ -18,11 +18,12 @@ class ListReaderTest {
             "2019-12-29");
 
     @BeforeAll
-    public static void testStart(){
+    public static void testStart() {
         System.out.println("Beginning test");
     }
+
     @Test
-    void returnMatch() {
+    void ReadTestAndReturnMatch() {
         // Testar om returnMatch kan hitta med namn / personNr
 
         //7502031234, Anna Andersson 2022-05-03
@@ -43,7 +44,6 @@ class ListReaderTest {
         assert reader.getDateString().equalsIgnoreCase("2019-12-29");
 
     }
-
     @Test
     void splitInfoString() {
         // Testar att splitInfoString kan separera en text med både personNr och namn.
@@ -68,7 +68,7 @@ class ListReaderTest {
     }
 
     @Test
-    public void isMembershipStillValid() {
+    public void isMember() {
         // Testar att medlemskap med som betalats inom eller = ett år blir aktivt.
         // Testar så att gammalt datum visar inaktivt medlemskap.
 
@@ -81,24 +81,30 @@ class ListReaderTest {
     }
 
     @Test
-    public void writeToDokument() {
+    public void readAndWriteDokument() {
         // Testar så att skrift till dokument får rätt dokumentnamn samt rätt text som visar efter läsning.
 
-        String infoString = "7502031234, Anna Andersson";
+        String infoString = "7502031234, Anna Andersson"; // input
 
-        // Skriver till fil. Filen ska alltså heta Namn + Personnr.
-        reader.writeLog("7502031234, Anna Andersson");
+        // Skriver till fil:
+        // Genom metoden writeLog kommer en fil skrivas med filnamnet (Namn - PersonNr).
+        // I filen sparas PersonNr, Namn, Besöksdatum - LocalDate.now();
+        reader.writeLog(infoString);
+
+
+        // Läser från skapat dokument:
+
+        //Använder splitInfoString för att separera infoString till Arrays.
         String[] infoStringArray = reader.splitInfoString(infoString);
 
-
-        // testar att vi kan läsa dokumentet igen och få rätt utskrift.
         try {
-            Scanner input = new Scanner(new FileReader(infoStringArray[1]+" - " + infoStringArray[0]));
+            Scanner readFile = new Scanner(new FileReader(infoStringArray[1] + " - " + infoStringArray[0]));
 
-            // Testar att utskriften till fil stämmer.
-            assert input.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: " + LocalDate.now());
-        } catch (Exception e) {
-            System.out.println("Kunde inte läsa fil");
+            // Testar att utskriften till filen ger önskat resultat.
+            assert readFile.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: " + LocalDate.now());
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Kunde inte hitta filen.");
             e.printStackTrace();
         }
     }
@@ -109,20 +115,16 @@ class ListReaderTest {
         // Fungerar ej som den ska i test, utan bara separat.
         // Låter den vara kvar som extra funktion
 
-        try {
+        String infoString = "7502031234, Anna Andersson";
+        String[] infoStringArray = reader.splitInfoString(infoString);
 
-            File f = new File("Anna Andersson - 7502031234"); // Tar bort demofil
+        reader.removeFile(infoStringArray[1], infoStringArray[0]);
 
-            if (f.delete()) //returnerar boolean
-            {
-                System.out.println(f.getName() + " deleted");   //Skriver filnamn + deleted om den lyckas
-            } else {
-                System.out.println("Could not delete testFile"); // annars failed
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
-}
+    @AfterAll
+    public static void avslut() {
 
+        System.out.println("Closing test");
+    }
+
+}
