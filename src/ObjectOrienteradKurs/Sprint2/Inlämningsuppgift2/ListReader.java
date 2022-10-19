@@ -78,7 +78,7 @@ public class ListReader {
         LocalDate dateInput = LocalDate.of(date[0], date[1], date[2]);
         LocalDate dateToday = LocalDate.now();
 
-        // Om datum inte är tidigare än ett år från idag returneras true, kunden är aktivMedlem.
+        // Om det skiljer mindre än ett år från dateInput och dateToday, kunden är aktivMedlem.
         return (!dateInput.isBefore(dateToday.minusYears(1)));
 
     }
