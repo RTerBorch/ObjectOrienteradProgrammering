@@ -65,6 +65,7 @@ class ListReaderTest {
         assert dateStringArray[0] == 2022;
         assert dateStringArray[1] == 5;
         assert dateStringArray[2] == 3;
+
     }
 
     @Test
@@ -73,8 +74,7 @@ class ListReaderTest {
         // Testar så att gammalt datum visar inaktivt medlemskap.
 
         String dateString = (LocalDate.now().toString()); // Dagens datum ska bli rätt (inom 1 år från nu)
-        String dateString2 = "2021-10-15"; // ska bli fel (mer än 1 år)
-        reader.isMember(dateString);
+        String dateString2 = "2021-10-18"; // ska bli fel (mer än 1 år)
 
         assert reader.isMember(dateString);
         assert !reader.isMember(dateString2);
@@ -104,7 +104,7 @@ class ListReaderTest {
             assert readFile.nextLine().equals("Personnr: 7502031234\tNamn: Anna Andersson\tBesöksdatum: " + LocalDate.now());
 
         } catch (FileNotFoundException e) {
-            System.out.println("Kunde inte hitta filen.");
+            System.out.println("Kunde inte hitta filen i testningen readAndWriteDokument.");
             e.printStackTrace();
         }
     }

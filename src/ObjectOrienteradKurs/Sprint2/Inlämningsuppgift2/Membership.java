@@ -4,7 +4,7 @@ public class Membership {
     private String name;
     private String socialNumber;
 
-
+    private boolean member;
 
 
 
@@ -24,7 +24,7 @@ public class Membership {
         this.socialNumber = socialNumber;
     }
 
-    private boolean member;
+
 
     public boolean isMember() {
         return member;
