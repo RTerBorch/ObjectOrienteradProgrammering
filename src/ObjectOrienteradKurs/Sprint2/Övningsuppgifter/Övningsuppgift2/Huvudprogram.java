@@ -8,8 +8,5 @@ public class Huvudprogram {
         Volvo.callInputs(); // Kallar alla inputs
 
 
-
-
-
     }
 }
