@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint3.Övningsuppgift1;
+package ObjectOrienteradKurs.Sprint3.Övningsuppgifter.Övningsuppgift1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,13 +13,13 @@ public class BildVisare2 extends JFrame implements ActionListener {
 
     int bildnr = 0;
 
-    Path p = Paths.get("src/ObjectOrienteradKurs/Sprint3/Övningsuppgift1/Bilder");
+    Path p = Paths.get("src/ObjectOrienteradKurs/Sprint3/Övningsuppgifter/Övningsuppgift1/Bilder");
 
     ImageIcon tempImage = new ImageIcon();
-    ImageIcon unicorn = new ImageIcon("src/ObjectOrienteradKurs/Sprint3/Övningsuppgift1/Bilder/unicorn.jpg");
-    ImageIcon puppy = new ImageIcon("ObjectOrienteradKurs/Sprint3/Övningsuppgift1/Bilder/Leroys valp.jpg");
+    ImageIcon unicorn = new ImageIcon("src/ObjectOrienteradKurs/Sprint3/Övningsuppgifter/Övningsuppgift1/Bilder/unicorn.jpg");
+    ImageIcon puppy = new ImageIcon("src/ObjectOrienteradKurs/Sprint3/Övningsuppgifter/Övningsuppgift1/Bilder/Leroys valp.jpg");
 
-    //JLabel text1 = new JLabel("Leroys bildspel");
+
     JLabel bildNu = new JLabel(unicorn, JLabel.CENTER);
 
     JPanel northPanel = new JPanel();
