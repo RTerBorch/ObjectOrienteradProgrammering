@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint3.Labb;
+package ObjectOrienteradKurs.Sprint3.Labb.lektion2;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 

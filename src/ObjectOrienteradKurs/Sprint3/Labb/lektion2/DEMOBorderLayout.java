@@ -1,8 +1,10 @@
-package ObjectOrienteradKurs.Sprint3.Labb;
+package ObjectOrienteradKurs.Sprint3.Labb.lektion2;
 
 import javax.swing.*;
 
-public class BorderLayout {
+public class DEMOBorderLayout {
+
+
 
     public static void main(String[] args){
 

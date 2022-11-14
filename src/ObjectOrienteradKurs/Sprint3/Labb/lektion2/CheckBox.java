@@ -1,8 +1,7 @@
-package ObjectOrienteradKurs.Sprint3.Labb;
+package ObjectOrienteradKurs.Sprint3.Labb.lektion2;
 
 import javax.swing.*;
 import java.awt.GridLayout;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,7 +16,7 @@ public class CheckBox extends JFrame implements ActionListener {
     public CheckBox() {
         p.setLayout(new GridLayout(4, 1));
         p.add(red);p.add(blue);p.add(yellow);
-
+        p.add(DisplayArea);
         add(p);
 
 
@@ -32,6 +31,7 @@ public class CheckBox extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     if (red.isEnabled() && blue.isEnabled()){
+        DisplayArea.setText("WDDWAD");
 
     }
 

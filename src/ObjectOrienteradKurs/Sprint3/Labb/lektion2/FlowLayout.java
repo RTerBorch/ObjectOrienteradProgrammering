@@ -1,4 +1,4 @@
-package ObjectOrienteradKurs.Sprint3.Labb;
+package ObjectOrienteradKurs.Sprint3.Labb.lektion2;
 
 import javax.swing.*;
 
